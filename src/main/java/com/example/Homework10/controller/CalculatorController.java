@@ -19,23 +19,23 @@ public class CalculatorController {
     @GetMapping(path = "/plus")
     public String plusOperation(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         if(num1 == null || num2 == null) throw new CalculatorRuntimeException("Параметры не поданы");
-        return calculatorService.plus(num1, num2);
+        return String.format("%.0f + %.0f = %.0f", num1, num2, calculatorService.plus(num1, num2));
     }
     @GetMapping(path = "/minus")
     public String minusOperation(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         if(num1 == null || num2 == null) throw new CalculatorRuntimeException("Параметры не поданы");
-        return calculatorService.minus(num1, num2);
+        return String.format("%.0f - %.0f = %.0f", num1, num2, calculatorService.minus(num1, num2));
     }
     @GetMapping(path = "/multiply")
     public String multiplyOperation(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         if(num1 == null || num2 == null) throw new CalculatorRuntimeException("Параметры не поданы");
-        return calculatorService.multiply(num1, num2);
+        return String.format("%.0f * %.0f = %.0f", num1, num2, calculatorService.multiply(num1, num2));
     }
     @GetMapping(path = "/divide")
     public String divideOperation(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         if(num1 == null || num2 == null) throw new CalculatorRuntimeException("Параметры не поданы");
         if(num2 == 0) throw new CalculatorRuntimeException("На ноль делить нельзя");
-        return calculatorService.divide(num1, num2);
+        return String.format("%.0f / %.0f = %.0f", num1, num2, calculatorService.divide(num1, num2));
     }
     @GetMapping
     public String greetingOperation(){
